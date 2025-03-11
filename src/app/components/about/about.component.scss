@@ -1,0 +1,34 @@
+.about-us {
+  padding: 18px 36px;
+
+  &__heading {
+    text-align: center;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 30px;
+  }
+  &__profile {
+    border-radius: 50%;
+  }
+
+  &__member-name {
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+
+  @media screen and (max-width: 768px){
+    .about-us{
+      &__left{
+         
+          display: block;
+          text-align: center;
+          margin-top: 30px;
+      }
+    }
+    
+  }
+}

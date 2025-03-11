@@ -1,0 +1,44 @@
+<div class="admin">
+    <form #courseForm="ngForm" (ngSubmit)="onSubmit(courseForm)" class="col admin__form">
+        <h1 class="card-header">Add courses</h1>
+        <div class="col-12 admin__title">
+            <label for="title" class="form-lable admin__title-lable">Title</label><br>
+            <input type="title" name="title" id="title" class="form-control admin__title-input" placeholder="title"
+                #title="ngModel" [(ngModel)]="model.title" required>
+
+            @if(title.invalid && title.touched){
+            <span class="text-danger">Title is required</span>
+            }
+        </div>
+
+        <div class="col-12 mt-4 admin__description">
+            <label for="description" class="form-lable admin__desc-lable">Description</label><br>
+            <textarea name="description" id="description" rows="8" class="form-control admin__desc-textarea"
+                placeholder="type here" #description="ngModel" [(ngModel)]="model.description" required></textarea>
+
+            @if(description.invalid && description.touched){
+            <span class="text-danger">Description is required</span>
+            }
+        </div>
+
+        <div class="mt-4">
+            <label for="image">Choosen image</label>
+            <input type="file" id="image" name="image" accept="image/*" (change)="onFileSelected($event)"
+                multiple="flase" ngModel required>
+            @if (showError){
+            <span class="text-danger">Image is required</span>
+            }
+            @if(cover) {
+            <div class="col-md-6 mt-4">
+                <img [src]="cover" alt="" width="300px" height="auto">
+            </div>
+            }
+        </div>
+
+        <div class="col-12 mt-4 admin__button">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+<app-courses [courses]="courses" [isAdmin]="true" (click)="deleteCourse($event)"></app-courses>
